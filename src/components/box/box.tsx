@@ -1,5 +1,6 @@
-import React, { forwardRef, PropsWithChildren } from "react";
-import { StylableComponentProps } from "../../types";
+import React, { forwardRef, PropsWithChildren } from 'react';
+
+import { StylableComponentProps } from '@app/types';
 
 // Note: Just to abstract away the html components, and use the
 // projects atomic components
