@@ -2,37 +2,34 @@ const baseTheme = {
   scaleFactor: 8,
   palette: {
     white: {
-      main: "#FFFFFF"
-    },
-    blue: {
-      main: "#005B96",
-      dark: "#011F4B",
-      light: "#F1FAFE"
-    },
-    green: {
-      main: "#1BC5BD"
-    },
-    yellow: {
-      main: "#F6CA65",
-      dark: "#FFC107"
+      main: '#FFFFFF',
     },
     gray: {
-      light: "#F3F6F9",
-      main: "#7E8299"
-    },
-    red: {
-      main: "#F24E1E"
+      midnight: '#F4F8FA',
+      dark: '#1E2A32',
+      light: '#F4F8FA',
     },
     purple: {
-      main: "#A259FF"
-    }
+      midnight: '#423C66',
+      gray: '#595D7B',
+    },
+    salmon: {
+      main: '#FFDBCB',
+    },
   },
   typography: {
-    fontSize: "16px",
-    fontFamily: '"Robot", "Helvetica", "Arial", sans-serif',
-    fontWeightRegular: 400,
-    fontWeightMedium: 500,
-    fontWeightBold: 700
+    fontFamily: {
+      main: '"Work Sans", "Helvetica", "Arial", sans-serif',
+      alt: '"Inter", "Helvetica", "Arial", sans-serif',
+      alt2: '"Rubik", "Helvetica", "Arial", sans-serif',
+    },
+    fontWeight: {
+      regular: 400,
+      medium: 500,
+      semiBold: 600,
+      bold: 700,
+    },
+    defaultSize: '16px',
   },
   breakpoints: {
     values: {
@@ -40,20 +37,35 @@ const baseTheme = {
       sm: 600,
       md: 900,
       lg: 1200,
-      xl: 1536
+      xl: 1536,
     },
-    up(bp: "xs" | "sm" | "md" | "lg" | "xl") {
+    up(bp: 'xs' | 'sm' | 'md' | 'lg' | 'xl') {
       return `@media (min-width: ${this.values[bp]}px)`;
     },
-    down(bp: "xs" | "sm" | "md" | "lg" | "xl") {
+    down(bp: 'xs' | 'sm' | 'md' | 'lg' | 'xl') {
       return `@media (max-width: ${this.values[bp]}px)`;
-    }
+    },
   },
   spacing(mul: number = 1) {
     return `${this.scaleFactor * mul}px`;
-  }
+  },
 };
 
-const defaultTheme = { ...baseTheme };
+const defaultTheme = {
+  ...baseTheme,
+  palette: {
+    ...baseTheme.palette,
+    background: {
+      default: baseTheme.palette.gray.light,
+      paper: baseTheme.palette.white.main,
+    },
+    text: {
+      default: baseTheme.palette.gray.dark,
+      alt: baseTheme.palette.gray.midnight,
+    },
+  },
+};
+
+export type AppTheme = typeof defaultTheme;
 
 export default defaultTheme;
