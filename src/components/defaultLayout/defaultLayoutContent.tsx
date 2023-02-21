@@ -4,11 +4,15 @@ import { PropsWithChildren } from 'react';
 import { StylableComponentProps } from '@app/types';
 import { Box } from '@app/components';
 
-export interface DefaultLayoutProps
+export interface DefaultLayoutContentProps
   extends PropsWithChildren<StylableComponentProps> {}
 
-export const DefaultLayout = styled(Box)`
-  min-height: 100vh;
+export const DefaultLayoutContent = styled(Box)(
+  ({ theme }) => `
+  padding: ${theme.components.content.padding};
+  flex: 1 1 auto;
   display: flex;
-  flex-direction: column;
-`;
+  align-items: center;
+  justify-content: center;
+`
+);
