@@ -1,2 +1,3 @@
 export * from './defaultLayout';
-export * from './defaultLayoutNavbar';
+export * from './defaultLayoutAppBar';
+export * from './defaultLayoutContent';

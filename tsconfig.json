@@ -17,10 +17,9 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@app/*": ["./src/*"],
-      "@public/*": ["./public/*"]
+      "@app/*": ["./src/*"]
     },
-    "types": ["./src/types/emotion.d.ts"]
+    "types": ["./src/types/emotion.d.ts", "node"]
   },
   "include": ["./src/**/*.ts", "./src/**/*.tsx"],
   "exclude": ["node_modules"]
