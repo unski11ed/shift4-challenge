@@ -45,7 +45,7 @@ export const InputCurrency = ({
       numberVal = max && numberVal > max ? max : numberVal;
 
       if (!Number.isNaN(numberVal)) {
-        setStrValue(formatCurrencyDecimal(numberVal));
+        setStrValue(formatCurrencyDecimal(numberVal * 100));
 
         onChange(numberVal * 100);
       }

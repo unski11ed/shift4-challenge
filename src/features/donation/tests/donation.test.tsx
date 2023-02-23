@@ -193,4 +193,18 @@ describe('Donation Feature', () => {
       )
     ).toBeInTheDocument();
   });
+
+  it('should reformat the amount in the input properly', async () => {
+    const VALUE = 234567.8999;
+    const EXPECTED = `234,567.89`;
+
+    const { getByLabelText } = renderWithProviders(<Donation />);
+
+    fireEvent.change(getByLabelText('fields.labelValue'), {
+      target: { value: VALUE },
+    });
+    fireEvent.blur(getByLabelText('fields.labelValue'));
+
+    expect(getByLabelText('fields.labelValue')).toHaveDisplayValue(EXPECTED);
+  });
 });
