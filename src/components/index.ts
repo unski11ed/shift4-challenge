@@ -6,3 +6,5 @@ export * from './typography';
 export * from './alert';
 export * from './unstyledButton';
 export * from './button';
+export * from './input';
+export * from './form';

@@ -14,5 +14,9 @@ export const DefaultLayoutAppBar = styled(Box)(
   padding: ${theme.spacing(3)} ${theme.spacing(5)};
   position: sticky;
   top: 0;
+
+  ${theme.breakpoints.down('sm')} {
+    display: none;
+  }
 `
 );

@@ -14,5 +14,9 @@ export const DefaultLayoutContent = styled(Box)(
   display: flex;
   align-items: center;
   justify-content: center;
+
+  ${theme.breakpoints.down('sm')} {
+    padding: 0;
+  }
 `
 );

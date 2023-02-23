@@ -23,6 +23,12 @@ const applyButtonStyle = (
       background: ${targetStyle.pressed.backgroundColor ?? 'inherit'};
       border-color: ${targetStyle.pressed.borderColor ?? 'inherit'};
     }
+    &:disabled {
+      pointer-events: none;
+      cursor: not-allowed;
+      background: ${targetStyle.disabled.backgroundColor ?? 'inherit'};
+      border-color: ${targetStyle.disabled.borderColor ?? 'inherit'};
+    }
   `;
 };
 
