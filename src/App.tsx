@@ -8,6 +8,7 @@ import {
   Image,
 } from '@app/components';
 import Donation from '@app/features/donation';
+import CommonErrorBoundary from './features/commonErrorBoundary';
 
 export default function App() {
   const theme = useTheme();
@@ -29,20 +30,22 @@ export default function App() {
           }
         `}
       />
-      <DefaultLayout>
-        <DefaultLayoutAppBar>
-          <Image src="/images/logo.svg" alt="Natur.ally logo" />
-        </DefaultLayoutAppBar>
-        <DefaultLayoutContent>
-          {/* 
-            NOTE: Typically there should be a router here
-            rendering pages which render the features.
-            As this is not a part of the requirements
-            for this excersise I'm rendering the feature directly.
-          */}
-          <Donation />
-        </DefaultLayoutContent>
-      </DefaultLayout>
+      <CommonErrorBoundary>
+        <DefaultLayout>
+          <DefaultLayoutAppBar>
+            <Image src="/images/logo.svg" alt="Natur.ally logo" />
+          </DefaultLayoutAppBar>
+          <DefaultLayoutContent>
+            {/* 
+              NOTE: Typically there should be a router here
+              rendering pages which render the features.
+              As this is not a part of the requirements
+              for this excersise I'm rendering the feature directly.
+            */}
+            <Donation />
+          </DefaultLayoutContent>
+        </DefaultLayout>
+      </CommonErrorBoundary>
     </>
   );
 }
