@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import styled from '@emotion/styled';
+import { useTranslation } from 'react-i18next';
 
 import { StylableComponentProps } from '@app/types';
 import {
@@ -43,9 +44,17 @@ const PapeWrap = styled(Paper)(
 `
 );
 
+const PlaceholderAlert = styled(Alert)(
+  ({ theme }) => `
+  margin-top: ${theme.spacing(3)}
+`
+);
+
 export interface DonationProps extends StylableComponentProps {}
 
 export const Donation = (props: DonationProps) => {
+  const { t } = useTranslation('donation');
+
   const submitHandler = (values: DonationPayload) => {
     // eslint-disable-next-line no-console
     console.log(values);
@@ -79,7 +88,9 @@ export const Donation = (props: DonationProps) => {
         {({ values }) => (
           <DonationLayout>
             <DonationLayoutCell cellId="value">
-              <InputLabel htmlFor="donation-value">I can donate</InputLabel>
+              <InputLabel htmlFor="donation-value">
+                {t('fields.labelValue')}
+              </InputLabel>
               <FieldNumber name="amount">
                 {(fieldProps) => (
                   <InputCurrency
@@ -91,7 +102,9 @@ export const Donation = (props: DonationProps) => {
               </FieldNumber>
             </DonationLayoutCell>
             <DonationLayoutCell cellId="date">
-              <InputLabel htmlFor="donation-time">Every month until</InputLabel>
+              <InputLabel htmlFor="donation-time">
+                {t('fields.labelTime')}
+              </InputLabel>
               <FieldString name="until">
                 {(fieldProps) => (
                   <InputMonth
@@ -107,21 +120,20 @@ export const Donation = (props: DonationProps) => {
               {isDataValid(values) ? (
                 <DonationSummary donation={values as DonationPayload} />
               ) : (
-                <Alert>
+                <PlaceholderAlert>
                   <Typography type="small">
-                    Please fill the values above to get a donation summary, and
-                    proceed.
+                    {t('summary.placeholder')}
                   </Typography>
-                </Alert>
+                </PlaceholderAlert>
               )}
             </DonationLayoutCell>
 
             <DonationLayoutCell cellId="actionCancel">
-              <ActionButton outline>Cancel</ActionButton>
+              <ActionButton outline>{t('actions.close')}</ActionButton>
             </DonationLayoutCell>
             <DonationLayoutCell cellId="actionProceed">
               <ActionButton type="submit" disabled={!isDataValid(values)}>
-                Continue
+                {t('actions.continue')}
               </ActionButton>
             </DonationLayoutCell>
           </DonationLayout>

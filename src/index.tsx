@@ -3,6 +3,8 @@ import { createRoot } from 'react-dom/client';
 import { ThemeProvider } from '@emotion/react';
 
 import defaultTheme from '@app/theme';
+
+import './i18n';
 import App from './app';
 
 const rootElement = document.getElementById('root');

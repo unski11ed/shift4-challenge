@@ -1,0 +1,23 @@
+{
+  "banner": {
+    "title": "The giving block",
+    "subtitle": "Set up your donation goal"
+  },
+  "actions": {
+    "close": "Close",
+    "cancel": "Cancel",
+    "continue": "Continue"
+  },
+  "imageAlts": {
+    "iconCros": "Cross icon"
+  },
+  "fields": {
+    "labelValue": "I can donate",
+    "labelTime": "Every month until"
+  },
+  "summary": {
+    "info": "You will be sending <1>{{amountFormatted}}</1> every month until <3>{{dateFormatted}}</3>. Thank you!",
+    "placeholder": "Please fill the values above to get a donation summary, and proceed.",
+    "labelTotal": "Total amount"
+  }
+}

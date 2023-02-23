@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { useTranslation } from 'react-i18next';
 
 import { Box, Image, Typography } from '@app/components';
 import { StylableComponentProps } from '@app/types';
@@ -46,12 +47,19 @@ const BannerHeading = styled(Typography)`
 
 export interface BannerProps extends StylableComponentProps {}
 
-export const Banner = (props: BannerProps) => (
-  <BannerWrap {...props}>
-    <BannerImage src="/images/donation.svg" alt="People with a single heart" />
-    <BannerTextWrap>
-      <BannerHeading type="h1">The giving block</BannerHeading>
-      <Typography type="subtitle">Set up your donation goal</Typography>
-    </BannerTextWrap>
-  </BannerWrap>
-);
+export const Banner = (props: BannerProps) => {
+  const { t } = useTranslation('donation');
+
+  return (
+    <BannerWrap {...props}>
+      <BannerImage
+        src="/images/donation.svg"
+        alt="People with a single heart"
+      />
+      <BannerTextWrap>
+        <BannerHeading type="h1">{t('banner.title')}</BannerHeading>
+        <Typography type="subtitle">{t('banner.subtitle')}</Typography>
+      </BannerTextWrap>
+    </BannerWrap>
+  );
+};

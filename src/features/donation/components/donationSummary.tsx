@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { Trans, useTranslation } from 'react-i18next';
 
 import { StylableComponentProps } from '@app/types';
 import { Alert, Box, Typography } from '@app/components';
@@ -73,24 +74,35 @@ export interface DonationSummaryProps extends StylableComponentProps {
   donation: DonationPayload;
 }
 
-export const DonationSummary = ({ donation }: DonationSummaryProps) => (
-  <DonationWrap>
-    <TotalWrap>
-      <LabelTypography>Total amount</LabelTypography>
-      <ValueTypography>
-        {formatCurrencyRounded(
-          Math.ceil(diffMonths(new Date(), new Date(donation.until))) *
-            (donation.amount as number)
-        )}
-      </ValueTypography>
-    </TotalWrap>
-    <Alert type="default">
-      <Typography type="small">
-        You will be sending{' '}
-        <strong>{formatCurrency(donation.amount as number)}</strong> every month
-        until <strong>{formatMonth(new Date(donation.until))}</strong>. Thank
-        you!
-      </Typography>
-    </Alert>
-  </DonationWrap>
-);
+export const DonationSummary = ({ donation }: DonationSummaryProps) => {
+  const amountFormatted = formatCurrency(donation.amount as number);
+  const dateFormatted = formatMonth(new Date(donation.until));
+  const { t } = useTranslation('donation');
+
+  return (
+    <DonationWrap>
+      <TotalWrap>
+        <LabelTypography>{t('summary.labelTotal')}</LabelTypography>
+        <ValueTypography>
+          {formatCurrencyRounded(
+            Math.ceil(diffMonths(new Date(), new Date(donation.until))) *
+              (donation.amount as number)
+          )}
+        </ValueTypography>
+      </TotalWrap>
+      <Alert type="default">
+        <Typography type="small">
+          <Trans
+            ns="donation"
+            i18nKey="summary.info"
+            amountFormatted={amountFormatted}
+            dateFormatted={dateFormatted}
+          >
+            You will be sending <strong>{{ amountFormatted }}</strong> every
+            month until <strong>{{ dateFormatted }}</strong>. Thank you!
+          </Trans>
+        </Typography>
+      </Alert>
+    </DonationWrap>
+  );
+};
