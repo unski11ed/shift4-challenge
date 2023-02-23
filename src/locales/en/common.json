@@ -1,1 +1,10 @@
-{}
+{
+  "imageAlts": {
+    "iconLeftArrow": "Left Arrow",
+    "iconRightArrow": "Right Arrow"
+  },
+  "inputMonth": {
+    "actionPrev": "Previous month",
+    "actionNext": "Next month"
+  }
+}

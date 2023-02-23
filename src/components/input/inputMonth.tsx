@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { useTranslation } from 'react-i18next';
 
 import { StylableComponentProps } from '@app/types';
 import formatDate from '@app/utils/formatDate';
@@ -112,6 +113,7 @@ export const InputMonth = ({
   format,
   ...styleProps
 }: InputMonthProps) => {
+  const { t } = useTranslation('common');
   const formatter = format ?? formatDate;
   const selectedDate = fixDateRange(
     toBeginningOfMonth(new Date((value || minDate) ?? '')),
@@ -136,10 +138,16 @@ export const InputMonth = ({
   };
 
   return (
-    <InputWrap {...styleProps}>
+    <InputWrap {...styleProps} data-testid="input-month">
       <ButtonWrap>
-        <SelectorButton onClick={prevMonthHandler}>
-          <Image src="/icons/chevron-left.svg" alt="Previous month" />
+        <SelectorButton
+          onClick={prevMonthHandler}
+          aria-label={t('inputMonth.actionPrev')}
+        >
+          <Image
+            src="/icons/chevron-left.svg"
+            alt={t('imageAlts.iconLeftArrow')}
+          />
         </SelectorButton>
       </ButtonWrap>
       <DateWrap>
@@ -147,8 +155,14 @@ export const InputMonth = ({
         <Typography type="small">{selectedYear}</Typography>
       </DateWrap>
       <ButtonWrap>
-        <SelectorButton onClick={nextMonthHandler}>
-          <Image src="/icons/chevron-right.svg" alt="Next month" />
+        <SelectorButton
+          onClick={nextMonthHandler}
+          aria-label={t('inputMonth.actionNext')}
+        >
+          <Image
+            src="/icons/chevron-right.svg"
+            alt={t('imageAlts.iconRightArrow')}
+          />
         </SelectorButton>
       </ButtonWrap>
     </InputWrap>
