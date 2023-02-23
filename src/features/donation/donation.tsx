@@ -50,14 +50,20 @@ const PlaceholderAlert = styled(Alert)(
 `
 );
 
-export interface DonationProps extends StylableComponentProps {}
+export interface DonationProps extends StylableComponentProps {
+  onSubmit?: (values: DonationPayload) => void;
+}
 
-export const Donation = (props: DonationProps) => {
+export const Donation = ({ onSubmit, ...props }: DonationProps) => {
   const { t } = useTranslation('donation');
 
   const submitHandler = (values: DonationPayload) => {
     // eslint-disable-next-line no-console
     console.log(values);
+
+    if (onSubmit) {
+      onSubmit(values);
+    }
   };
 
   const nextMonthDate = useMemo(() => {
@@ -79,7 +85,7 @@ export const Donation = (props: DonationProps) => {
     (amount ?? 0) > 0 && until;
 
   return (
-    <PapeWrap {...props} layer={4}>
+    <PapeWrap {...props} layer={4} data-testid="feature-donation">
       <CloseButton />
 
       <Banner />

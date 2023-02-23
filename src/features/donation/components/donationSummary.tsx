@@ -14,13 +14,13 @@ const diffMonths = (dateA: Date, dateB: Date) =>
   (dateB.getMonth() - dateA.getMonth());
 
 const formatCurrencyRounded = (value: number) => {
-  if (value > 100000000000) {
+  if (value >= 100000000000) {
     return `${formatCurrency(value / 1000000000)}B`;
   }
-  if (value > 100000000) {
+  if (value >= 100000000) {
     return `${formatCurrency(value / 1000000)}M`;
   }
-  if (value > 1000000) {
+  if (value >= 1000000) {
     return `${formatCurrency(value / 1000)}K`;
   }
   return formatCurrency(value);
@@ -80,7 +80,7 @@ export const DonationSummary = ({ donation }: DonationSummaryProps) => {
   const { t } = useTranslation('donation');
 
   return (
-    <DonationWrap>
+    <DonationWrap data-testid="donation-summary">
       <TotalWrap>
         <LabelTypography>{t('summary.labelTotal')}</LabelTypography>
         <ValueTypography>
@@ -90,7 +90,7 @@ export const DonationSummary = ({ donation }: DonationSummaryProps) => {
           )}
         </ValueTypography>
       </TotalWrap>
-      <Alert type="default">
+      <Alert type="default" data-testid="donation-summary-info">
         <Typography type="small">
           <Trans
             ns="donation"
