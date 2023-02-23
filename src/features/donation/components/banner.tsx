@@ -10,6 +10,12 @@ const BannerWrap = styled(Box)(
   padding: ${theme.spacing(4)} ${theme.spacing(5)};
   display: flex;
   align-items: center;
+
+  ${theme.breakpoints.down('sm')} {
+    flex-direction: column;
+    text-align: center;
+    padding: ${theme.spacing(3)};
+  }
 `
 );
 
@@ -18,6 +24,12 @@ const BannerTextWrap = styled(Box)(
   flex: 1 1 auto;
   margin-left: ${theme.spacing(3.5)};
   color: ${theme.palette.purple.gray};
+
+  ${theme.breakpoints.down('sm')} {
+    margin-top: ${theme.spacing(3)};
+    margin-left: 0;
+  }
+
   > * {
     margin-bottom: 0 !important;
   }

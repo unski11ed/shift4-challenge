@@ -32,14 +32,17 @@ const cellBase = ({ cellId }: { cellId: CellId }) =>
   `;
 
 const cellStyles = {
-  value: ({ theme }: CellStyleParams) => css`
-    padding: ${theme.spacing(2)};
-  `,
   actionCancel: ({ theme }: CellStyleParams) => css`
     padding: ${theme.spacing(1)};
+    margin-top: ${theme.spacing(2)};
+
+    ${theme.breakpoints.down('sm')} {
+      display: none;
+    }
   `,
   actionProceed: ({ theme }: CellStyleParams) => css`
     padding: ${theme.spacing(1)};
+    margin-top: ${theme.spacing(2)};
   `,
 };
 
@@ -68,13 +71,27 @@ export const DonationLayout = styled(Box)<DonationLayoutProps>(
   padding: ${theme.spacing(4)} ${theme.spacing(5)};
   display: grid;
   grid-auto-rows: 1fr;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   grid-template-rows: auto auto auto auto;
   gap: ${theme.spacing(2)} ${theme.spacing(2)};
   grid-template-areas:
     'value date'
-    'total total'
+    'summary summary'
     'summary summary'
     'actionCancel actionProceed';
+
+  ${theme.breakpoints.down('sm')} {
+    padding: ${theme.spacing(4)} ${theme.spacing(3)};
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      'value'
+      'date'
+      'summary'
+      'actionProceed';
+  }
+
+  ${theme.breakpoints.down('xs')} {
+    padding: ${theme.spacing(3)} ${theme.spacing(2)};
+  }
 `
 );

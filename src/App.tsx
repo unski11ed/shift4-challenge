@@ -34,6 +34,12 @@ export default function App() {
           <Image src="/images/logo.svg" alt="Natur.ally logo" />
         </DefaultLayoutAppBar>
         <DefaultLayoutContent>
+          {/* 
+            NOTE: Typically there should be a router here
+            rendering pages which render the features.
+            As this is not a part of the requirements
+            for this excersise I'm rendering the feature directly.
+          */}
           <Donation />
         </DefaultLayoutContent>
       </DefaultLayout>

@@ -6,12 +6,18 @@ const baseTheme = {
     white: {
       main: '#FFFFFF',
     },
+    black: {
+      main: '#000000',
+    },
     gray: {
-      midnight: '#F4F8FA',
+      midnight: '#4D6475',
       dark: '#1E2A32',
       light: '#F4F8FA',
+      lighter: '#E9EEF2',
     },
     purple: {
+      lightest: '#F3F5FE',
+      lighter: '#E8EAF2',
       light: '#B2A7F4',
       midnight: '#423C66',
       gray: '#595D7B',
@@ -37,7 +43,7 @@ const baseTheme = {
   },
   breakpoints: {
     values: {
-      xs: 0,
+      xs: 380,
       sm: 600,
       md: 900,
       lg: 1200,
@@ -67,6 +73,9 @@ const defaultTheme = {
       default: baseTheme.palette.gray.dark,
       alt: baseTheme.palette.gray.midnight,
     },
+  },
+  separator: {
+    color: baseTheme.palette.gray.lighter,
   },
   typography: {
     ...baseTheme.typography,
@@ -132,6 +141,14 @@ const defaultTheme = {
               backgroundColor: baseTheme.palette.purple.dark,
               borderColor: baseTheme.palette.purple.dark,
             },
+            disabled: {
+              backgroundColor: tinycolor(baseTheme.palette.purple.midnight)
+                .setAlpha(0.75)
+                .toRgbString(),
+              borderColor: tinycolor(baseTheme.palette.purple.midnight)
+                .setAlpha(0.75)
+                .toRgbString(),
+            },
           },
           outline: {
             color: baseTheme.palette.purple.gray,
@@ -151,6 +168,14 @@ const defaultTheme = {
                 .toRgbString(),
               borderColor: baseTheme.palette.purple.midnight,
             },
+            disabled: {
+              backgroundColor: tinycolor(baseTheme.palette.purple.light)
+                .setAlpha(0.1)
+                .toRgbString(),
+              borderColor: tinycolor(baseTheme.palette.purple.midnight)
+                .setAlpha(0.25)
+                .toRgbString(),
+            },
           },
         },
       },
@@ -158,6 +183,25 @@ const defaultTheme = {
       fontSize: '16px',
       fontWeight: baseTheme.typography.fontWeight.semiBold,
       radius: '5px',
+    },
+    input: {
+      borderWidth: '1px',
+      borderColor: baseTheme.palette.gray.lighter,
+      borderColorActive: baseTheme.palette.gray.midnight,
+      fontSize: '24px',
+      fontFamily: baseTheme.typography.fontFamily.alt2,
+      color: baseTheme.palette.purple.gray,
+      colorPlaceholder: tinycolor(baseTheme.palette.black.main)
+        .setAlpha(0.2)
+        .toRgbString(),
+      radius: '4px',
+      height: `calc(${baseTheme.spacing(8)} - 2px)`,
+    },
+    inputLabel: {
+      fontWeight: baseTheme.typography.fontWeight.medium,
+      color: baseTheme.palette.gray.midnight,
+      fontSize: '14px',
+      margin: `0 0 ${baseTheme.spacing(0.5)} 0`,
     },
   },
   shadows: {
