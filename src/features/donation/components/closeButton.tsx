@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { useTranslation } from 'react-i18next';
 
 import { UnstyledButton, UnstyledButtonProps, Image } from '@app/components';
 
@@ -20,8 +21,12 @@ const Button = styled(UnstyledButton)(
 
 export interface CloseButtonProps extends UnstyledButtonProps {}
 
-export const CloseButton = (props: CloseButtonProps) => (
-  <Button aria-label="Close" {...props}>
-    <Image src="/icons/cross.svg" alt="Cross icon" />
-  </Button>
-);
+export const CloseButton = (props: CloseButtonProps) => {
+  const { t } = useTranslation('donation');
+
+  return (
+    <Button aria-label={t('actions.close')} {...props}>
+      <Image src="/icons/cross.svg" alt={t('imageAlts.iconCros')} />
+    </Button>
+  );
+};
